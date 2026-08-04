@@ -4,9 +4,12 @@
 .dnnFormItem input[type="submit"],
 input[type='submit']
 {
-
-    @extend .btn;
-    @extend .btn-primary;
+    // Because DNN has :link and :visited in default.css
+    &:link, &:visited{
+        @extend .btn;
+        @extend .btn-primary;
+    }
+    
 
     &, &:hover{
         text-shadow: none;
@@ -25,8 +28,10 @@ input[type='submit']
 .dnnSecondaryAction, .dnnFormItem input[type="submit"], a.dnnSecondaryAction,
 .dnnTertiaryAction{
 
-    @extend .btn;
-    @extend .btn-secondary;
+    &:link, &:visited{
+        @extend .btn;
+        @extend .btn-secondary;
+    }
 
     &, &:hover{
         text-shadow: none;
