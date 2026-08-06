@@ -1,0 +1,54 @@
+// Maps DNN's jQuery-UI-based admin tab widget (e.g. the Messages/Notifications
+// flyout: ul.dnnAdminTabNav.ui-tabs-nav > li.ui-tabs-tab > a.ui-tabs-anchor)
+// onto Bootstrap 5's .nav-tabs styling.
+.dnnAdminTabNav {
+    @extend .nav;
+    @extend .nav-tabs;
+
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+
+    .ui-tabs-tab {
+        background: none;
+        border: none;
+        box-shadow: none;
+        border-radius: 0;
+    }
+
+    // Hand-rolled equivalent of Bootstrap's .nav-tabs .nav-link, using its own
+    // CSS custom properties. Not @extend .nav-link — that class is reused by
+    // navbar-nav, nav-pills, nav-underline, card-header-tabs, etc., and extending
+    // it here would drag this selector into all of those unrelated rules too.
+    .ui-tabs-anchor {
+        display: block;
+        padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+        margin-bottom: calc(-1 * var(--bs-nav-tabs-border-width));
+        color: var(--bs-nav-link-color);
+        text-decoration: none;
+        background: none;
+        border: var(--bs-nav-tabs-border-width) solid transparent;
+        border-top-left-radius: var(--bs-nav-tabs-border-radius);
+        border-top-right-radius: var(--bs-nav-tabs-border-radius);
+        transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+
+        &, &:hover {
+            text-shadow: none;
+            box-shadow: none;
+            background-image: none;
+        }
+
+        &:hover,
+        &:focus {
+            color: var(--bs-nav-link-hover-color);
+            border-color: var(--bs-nav-tabs-link-hover-border-color);
+        }
+    }
+
+    .ui-tabs-active .ui-tabs-anchor,
+    .ui-state-active .ui-tabs-anchor {
+        color: var(--bs-nav-tabs-link-active-color);
+        background-color: var(--bs-nav-tabs-link-active-bg);
+        border-color: var(--bs-nav-tabs-link-active-border-color);
+    }
+}
